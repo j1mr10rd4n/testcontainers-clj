@@ -71,7 +71,7 @@ Creates a testcontainers instance from a given Docker label and returns them
 | `:reuse`           | Boolean                     | Should the container be reused, if another Testcontainer with identical config is started?          |
 | `:env-vars`        | Map                         | A map with environment variables                                                                    |
 | `:command`         | Vector with strings         | The start command of the container                                                                  |
-| `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`)                      |
+| `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                         | A list of alias names for the container on the network                                              |
 | `:wait-for`        | Map                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for  |
 | `:log-to`          | Map                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}      |
@@ -142,7 +142,7 @@ Initializes a given Testcontainer, which was e.g. provided by a library
 | `:reuse`           | Boolean                                                     | Should the container be reused, if another Testcontainer with identical config is started?         |
 | `:env-vars`        | Map                                                         | A map with environment variables                                                                   |
 | `:command`         | Vector with strings                                         | The start command of the container                                                                 |
-| `:network`         | Map                                                         | A map containing the configuration of a Docker Network (see: `create-network`)                     |
+| `:network`         | Map or :host                                                | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                                                         | A list of alias names for the container on the network                                             |
 | `:wait-for`        | Map                                                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for |
 | `:log-to`          | Map                                                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}     |
@@ -157,7 +157,7 @@ Initializes a given Testcontainer, which was e.g. provided by a library
 | `:reuse`         | Boolean                                   | Is this container reusable?                                                               |
 | `:env-vars`      | Map                                       | Value of the same input parameter                                                         |
 | `:host`          | String                                    | The host for the Docker Container                                                         |
-| `:network`       | Map                                       | The network configuration of the Container, if provided                                   |
+| `:network`       | Map or :host                              | The network configuration of the Container, if provided.                                  |
 | `:wait-for`      | Map                                       | The wait-for configuration of the Container, if provided!                                 |
 
 #### Example:
@@ -198,7 +198,7 @@ Creates a testcontainer from a Dockerfile
 | `:reuse`           | Boolean                                                     | Should the container be reused, if another Testcontainer with identical config is started?         |
 | `:env-vars`        | Map                         | A map with environment variables                                               |
 | `:command`         | Vector with strings         | The start command of the container                                             |
-| `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`) |
+| `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                         | A list of alias names for the container on the network                         |
 | `:wait-for`        | Map                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for       |
 | `:log-to`          | Map                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}          |
@@ -416,7 +416,7 @@ Creates a network. The optional map accepts config values for enabling ipv6 and 
 | Key           | Type           | Description                                                |
 | ------------- | :------------- | :-----                                                     |
 | `:ipv6`       | boolean        | Should the network enable IPv6?                            |
-| `:driver`     | String         | The network driver used by Docker, e.g. `bridge` or `host` |
+| `:driver`     | String         | The network driver used by Docker, e.g. `bridge` |
 
 #### Result:
 
