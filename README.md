@@ -73,6 +73,7 @@ Creates a testcontainers instance from a given Docker label and returns them
 | `:command`         | Vector with strings         | The start command of the container                                                                  |
 | `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                         | A list of alias names for the container on the network                                              |
+| `:startup`         | Map                         | A map containing the [startup strategy](doc/startup-strategies.md) to use                           |
 | `:wait-for`        | Map                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for  |
 | `:log-to`          | Map                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}      |
 
@@ -86,6 +87,7 @@ Creates a testcontainers instance from a given Docker label and returns them
 | `:env-vars`      | Map                                       | Value of the same input parameter                                                         |
 | `:host`          | String                                    | The host for the Docker Container                                                         |
 | `:network`       | Map                                       | The network configuration of the Container, if provided                                   |
+| `:startup`       | Map                                       | The startup configuration of the Container, if provided                                   |
 | `:wait-for`      | Map                                       | The wait-for configuration of the Container, if provided!                                 |
 
 #### Example:
@@ -144,6 +146,7 @@ Initializes a given Testcontainer, which was e.g. provided by a library
 | `:command`         | Vector with strings                                         | The start command of the container                                                                 |
 | `:network`         | Map or :host                                                | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                                                         | A list of alias names for the container on the network                                             |
+| `:startup`         | Map                                                         | A map containing the [startup strategy](doc/startup-strategies.md) to use                          |
 | `:wait-for`        | Map                                                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for |
 | `:log-to`          | Map                                                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}     |
 |                    |                                                             |                                                                                                    |
@@ -158,6 +161,7 @@ Initializes a given Testcontainer, which was e.g. provided by a library
 | `:env-vars`      | Map                                       | Value of the same input parameter                                                         |
 | `:host`          | String                                    | The host for the Docker Container                                                         |
 | `:network`       | Map or :host                              | The network configuration of the Container, if provided.                                  |
+| `:startup`       | Map                                       | The startup configuration of the Container, if provided                                   |
 | `:wait-for`      | Map                                       | The wait-for configuration of the Container, if provided!                                 |
 
 #### Example:
@@ -201,6 +205,7 @@ Creates a testcontainer from a Dockerfile
 | `:network`         | Map                         | A map containing the configuration of a Docker Network (see: `create-network`). For host networking, use :host |
 | `:network-aliases` | Map                         | A list of alias names for the container on the network                         |
 | `:wait-for`        | Map                         | A map containing the [wait strategy](doc/wait-strategies.md) to use and the condition to check for       |
+| `:startup`         | Map                         | A map containing the [startup strategy](doc/startup-strategies.md) to use                                |
 | `:log-to`          | Map                         | A map containing the [log strategy](doc/log-strategies.md) to use, e.g. {:log-strategy string}          |
 |                    |                             |                                                                                |
 
@@ -214,6 +219,7 @@ Creates a testcontainer from a Dockerfile
 | `:env-vars`      | Map                                       | Value of the same input parameter                                                         |
 | `:host`          | String                                    | The host for the Docker Container                                                         |
 | `:network`       | Map                                       | The network configuration of the Container, if provided                                   |
+| `:startup`       | Map                                       | The startup configuration of the Container, if provided                                   |
 | `:wait-for`      | Map                                       | The wait-for configuration of the Container, if provided!                                 |
 
 #### Example:

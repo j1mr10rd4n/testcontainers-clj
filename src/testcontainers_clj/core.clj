@@ -17,6 +17,8 @@
       BaseConsumer
       OutputFrame
       ToStringConsumer)
+    (org.testcontainers.containers.startupcheck
+      OneShotStartupCheckStrategy)
     (org.testcontainers.containers.wait.strategy
       Wait)
     (org.testcontainers.images.builder
@@ -190,6 +192,7 @@
            command
            network
            network-aliases
+           startup
            wait-for] :as init-options}]
 
   (.setExposedPorts container (map int exposed-ports))
@@ -211,10 +214,20 @@
   (when network-aliases
     (.setNetworkAliases container network-aliases))
 
+  (when (some? startup)
+    (case (:strategy startup)
+      :one-shot
+      (.withStartupCheckStrategy container (OneShotStartupCheckStrategy.))
+
+      (:running nil)
+      ;; Default
+      nil))
+
   (merge init-options {:container     container
                        :exposed-ports (vec (.getExposedPorts container))
                        :env-vars      (into {} (.getEnvMap container))
                        :host          (.getHost container)
+                       :startup       startup
                        :network       network} (wait wait-for container)))
 
 (s/fdef create
